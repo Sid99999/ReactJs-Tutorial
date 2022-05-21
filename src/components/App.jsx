@@ -7,8 +7,13 @@ import Custom from "./Custom";//illustrate the proper use of props
 const amIabove18=true;
 const age=18;
 function App() {
+    function buttonClickfn(){
+        console.log("I am clicked");
+    }
+
     return <div>
         <Header/>
+        <button onClick={buttonClickfn}>CLick me!</button>
         <div className="content">
             <p>This is content {2+2} {2**2}</p>
             {amIabove18?<p>Kill me</p>:<p>Don't</p>}
