@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import * as ReactDOMClient from 'react-dom/client';
 import App from "./components/App"
 
 import reportWebVitals from './reportWebVitals';
 
 const container=document.getElementById('root')
 
-const root=ReactDOM.createRoot(container)
+const root=ReactDOMClient.createRoot(container)
 root.render( <App/>)
 
 
