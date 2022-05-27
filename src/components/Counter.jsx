@@ -14,6 +14,14 @@ import React, { useState } from "react";
 //useState returns a pair: the current state value(counter) and a function that lets you update it(setter function that updates the value).
 
 
+//setCount is a setter function 
+//It takes a value as an arguement
+//if typeOf value is a function like in increaseby2 or decreaseby2,react calls the function(inside the setter) which takes the old value of the counter as arguement and return the new value of the counter
+//It is advised to take function as arguement if the newer value is dependent on older value like in the case of counter
+
+//otherwise if typeOf value is anything other then function like boolean string integer or object etc it just sets counter as value and rerender it. Like in incrementFn and decrementFn 
+
+
  function Counter() {
      const [count,setCount]=useState(0)
      function incrementFn () {
@@ -23,6 +31,17 @@ import React, { useState } from "react";
      function decrementFn () {
         setCount(count-1)
        }
+       function increaseby2 () {
+         setCount(function(oldcountval){
+           return oldcountval+2;
+         })
+
+       }
+     function decreaseby2 () {
+        setCount(function (oldcountval) {  
+          return oldcountval-2;
+        })
+       }
 
   return (
     <div>
@@ -30,6 +49,9 @@ import React, { useState } from "react";
     <h3>My counter is : {count}</h3>
     <button onClick={decrementFn}>Decrement</button>
     <button onClick={incrementFn}>Increment</button>
+    
+    <button onClick={decreaseby2}>Decrement By 2</button>
+    <button onClick={increaseby2}>Increment By 2</button>
     </div>
   )
 }
